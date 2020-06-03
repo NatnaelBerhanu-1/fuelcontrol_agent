@@ -13,14 +13,16 @@ class DriversPage extends StatelessWidget{
       child: ChangeNotifierProvider<DriversViewModel>(
         create: (context)=>DriversViewModel(),
         child: Consumer<DriversViewModel>(
-          builder:(context, viewModel, child )=> viewModel.pageState == ViewState.Success? Padding(
-            padding: EdgeInsets.only(top: 10.0, bottom: 60.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children:
-                viewModel.drivers.map((driver){
-                  return DriverItem(driver: driver,);
-                }).toList(),
+          builder:(context, viewModel, child )=> viewModel.pageState == ViewState.Success? SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(top: 10.0, bottom: 60.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:
+                  viewModel.drivers.map((driver){
+                    return DriverItem(driver: driver,);
+                  }).toList(),
+              ),
             ),
           ): viewModel.pageState == ViewState.Error? Retry(callback: (){viewModel.getDrivers();}): Center(
             child: Padding(

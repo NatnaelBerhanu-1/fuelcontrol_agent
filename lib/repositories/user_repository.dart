@@ -4,7 +4,7 @@ import 'package:fuelcontrolseller/models/models.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-const baseUrl = 'http://192.168.1.2:8000/api/v1/';
+const baseUrl = 'https://www.zowitech.com/api/v1/';
 
 class UserRepository {
   final Future<SharedPreferences> preferences;
@@ -46,7 +46,7 @@ class UserRepository {
       try {
         String email = prefs.get("loggedInEmail");
         print('email $email');
-        var response = await http.get('${baseUrl}users/byemail/$email?role=fuelagent');
+        var response = await http.post('${baseUrl}users/byemail?role=fuelagent', body: {'email':email});
         print(response.body);
         if (response.statusCode == 200) {
           User usr = User.fromJson(json.decode(response.body)['data']);
@@ -178,7 +178,7 @@ class UserRepository {
   Future<dynamic> getDriver(String email) async {
 
     try{
-      var response = await http.get('${baseUrl}users/byemail/$email');
+      var response = await http.post('${baseUrl}users/byemail', body: {'email':email});
       var response2 = await http.get('${baseUrl}items?filter=all');
       print(response.body);
       print(response2.body);
