@@ -17,7 +17,7 @@ class UserRepository {
     final SharedPreferences prefs = await preferences;
     try{
       print('login try');
-      var response = await http.post(baseUrl+'login', body: {'email': user.email, 'password': user.password, 'filter': 'fuelagent'}).timeout(Duration(seconds: 10));
+      var response = await http.post(baseUrl+'login', body: {'email': user.email, 'password': user.password, 'filter': 'fuelagent'});
       print(response.body);
 
       if(response.statusCode == 200){

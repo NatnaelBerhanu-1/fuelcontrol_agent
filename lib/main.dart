@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:fuelcontrolseller/pages/login.dart';
-import 'package:fuelcontrolseller/pages/mainpage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fuelcontrolseller/pages/splash.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  if (sharedPreferences.get('loggedIn') == 'true') {
-    runApp(MyApp(MainPage()));
-    return;
-  }
-  runApp(MyApp(LoginPage()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  Widget to;
-  MyApp(this.to);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Fuel Control Driver',
+      title: 'Fuel Control Agent',
       theme: ThemeData(
           primaryColor: Color(0xFFF22613),
           primaryColorLight: Color(0xFFF34C3D),
@@ -34,7 +24,7 @@ class MyApp extends StatelessWidget {
             body1: TextStyle(fontSize: 18.0, fontWeight: FontWeight.normal, color: Colors.white),
           )
       ),
-      home: to,
+      home: SplashScreen(),
     );
   }
 }

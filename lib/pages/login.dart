@@ -54,7 +54,7 @@ class _LoginState extends State<LoginPage> {
                     alignment: Alignment.bottomRight,
                     padding: EdgeInsets.only(left: 80, bottom: 40, right: 20),
                     child: Text(
-                      'Welcome Please Signin to continue',
+                      'Fuel Agent App\nWelcome Please Signin to continue',
                       style: Theme.of(context)
                           .textTheme
                           .title
