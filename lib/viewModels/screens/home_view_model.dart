@@ -20,10 +20,13 @@ class HomeViewModel extends ChangeNotifier{
     if (_userRepository == null){
       _userRepository = UserRepository(preferences: sharedPreferences);
     }
-    getUser(false);
+//    getUser(false);
   }
 
   Future<User> getUser(bool refresh) async {
+    if(!refresh && loggedInUser!=null){
+      return loggedInUser;
+    }
     print('Gettting user');
     setState(ViewState.Busy);
     User user = await _userRepository.getUser(refresh);
