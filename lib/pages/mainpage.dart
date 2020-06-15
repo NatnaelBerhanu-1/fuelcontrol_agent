@@ -96,7 +96,7 @@ class _MainPageState extends State<MainPage> {
         color: Colors.white,
         shape: CircularNotchedRectangle(),
         child: SizedBox(
-          height: 60.0,
+          height: 65.0,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
