@@ -10,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'login.dart';
 
 class MainPage extends StatefulWidget {
-
   @override
   _MainPageState createState() => _MainPageState();
 }

@@ -76,16 +76,20 @@ class User {
     var roles = json['role'];
     var role = Role.fromJson(roles[0]);
     var dept = Department.fromJson(json['department']);
-
+    var total = double.parse("0");
+    print("total ${json['totalsale'].toString()}");
+    if(json['totalsale'].toString()!="null"){
+      total = double.parse(json['totalsale'].toString());
+    }
     return User(
         id: json['id'],
         name: json['name'],
         email: json['email'],
         balance: double.parse(json['balance'].toString()),
         status: json['status'],
-        monthlySale: double.parse(json['totalsale'].toString()),
+        monthlySale: double.parse(json['monthlysale'].toString()),
         dailySale: double.parse(json['dailysale'].toString()),
-        totalSale: double.parse(json['totalsale'].toString()),
+        totalSale: total,
         role: role,
         department: dept,
     );
